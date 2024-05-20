@@ -1,0 +1,6 @@
+.idea
+gift.appli/.idea
+gift.appli/src/vendor
+gift.appli/src/composer.lock
+sql
+gift.appli/src/conf/gift.db.conf.ini.dist
