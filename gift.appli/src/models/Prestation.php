@@ -1,15 +1,23 @@
 <?php
-
 namespace gift\appli\models;
 
-use Illuminate\Database\Eloquent\Model;
+class Prestation extends \Illuminate\Database\Eloquent\Model
+{
+ protected $table='prestation'; // la table associée
+ protected $primaryKey='id' ; // nom de la PK
+ protected $keyType='string' ; // type de la PK
 
-class Prestation extends Model{
-    protected $table = 'prestation';
-    protected $primaryKey = 'id';
-    public $incrementing = false;
-    public $keyType='string';
-    public $timestamp=false;
+ protected $fillable=['libelle','description','url','unite','tarif','img'] ;
+ public $timestamps=false ;
 
+ public function categorie(){
+     return $this->belongsTo('gift\appli\models\categorie', 'cat_id');
+ }
 
+ public function boxs() {
+    return $this->belongsToMany('gift\appli\models\prestation',
+    'box2presta',
+   'presta_id',
+   'box_id');
+ }
 }

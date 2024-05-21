@@ -1,17 +1,16 @@
 <?php
-
 namespace gift\appli\models;
 
-use Illuminate\Database\Eloquent\Model;
+class User extends \Illuminate\Database\Eloquent\Model
+{
+ protected $table='user'; // la table associée
+ protected $primaryKey='id' ; // nom de la PK
+ protected $keyType='string' ; // type de la PK
 
-class User extends Model{
-    protected $table = 'user';
-    protected $primaryKey = 'id';
-    public $incrementing = false;
-    public $keyType='string';
-    protected $fillable = ['user_id','password','role'];
-    public $timestamps = false;
+ protected $fillable=['user_id','password','role'] ;
+ public $timestamps=false ;
 
-
-
+ public function boxs(){
+     return $this->hasMany('gift\appli\models\box', 'createur_id');
+ }
 }

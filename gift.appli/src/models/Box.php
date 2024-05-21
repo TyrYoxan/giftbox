@@ -1,19 +1,24 @@
 <?php
-
 namespace gift\appli\models;
 
-use Illuminate\Database\Eloquent\Model;
-use gift\appli\models\User;
+class Box extends \Illuminate\Database\Eloquent\Model
+{
+ protected $table='box'; // la table associée
+ protected $primaryKey='id' ; // nom de la PK
+ protected $keyType='string' ; // type de la PK
 
-class Box extends Model{
-    protected $table = 'box';
-    protected $primaryKey = 'id';
-    public $incrementing = false;
-    public $keyType='string';
-    protected $fillable = ['token','libelle','description','montant','kdo','message_kdo','statut'];
-    public $timestamps = true;
+ protected $fillable=['token','libelle','description','montant','kdo','message_kdo','statut'] ;
+ public $timestamps=true ;
 
-    public function createur(): \Illuminate\Database\Eloquent\Relations\BelongsTo{
-        return $this->belongsTo(User::class, 'createur_id');
+ public function createur(){
+     return $this->belongsTo('gift\appli\models\user','createur_id');
+ }
+
+ public function prestations() {
+    return $this->belongsToMany('gift\appli\models\prestation',
+    'box2presta',
+   'box_id',
+   'presta_id')
+    ->withPivot( ['quantite'] );
     }
 }

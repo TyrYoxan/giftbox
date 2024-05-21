@@ -13,6 +13,6 @@ $app->addRoutingMiddleware();
 $app->addErrorMiddleware(true, false, false);
 
 
-$app=(require_once './routes.php')($app);
+$app=(require_once 'routes.php')($app);
 
 return $app;

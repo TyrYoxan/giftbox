@@ -1,15 +1,15 @@
 <?php
-
 namespace gift\appli\models;
 
-use Illuminate\Database\Eloquent\Model;
+class Categorie extends \Illuminate\Database\Eloquent\Model
+{
+ protected $table='categorie'; // la table associée
+ protected $primaryKey='id' ; // nom de la PK
 
-class Categorie extends Model{
-    protected $table = 'categorie';
-    protected $primaryKey = 'id';
-    protected $fillable = ['libelle', 'description'];
-    public $incrementing = false;
-    public $keyType='string';
-    public $timestamps = false;
+ protected $fillable=['libelle','description'] ;
+ public $timestamps=false ;
 
+ public function prestations(){
+    return $this->hasMany('gift\appli\models\prestation', 'cat_id');
+}
 }
