@@ -6,6 +6,7 @@ use gift\appli\models\Prestation;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpBadRequestException;
+use Slim\Exception\HttpNotFoundException;
 use Symfony\Component\Translation\Exception\NotFoundResourceException;
 
 class PrestationAction
@@ -28,7 +29,7 @@ class PrestationAction
             $response->getBody()->write($html);
             return $response;
         }catch (\Exception $e){
-            return $response->withStatus(404);
+            throw new HttpNotFoundException($request, "prestion not found");
         }
 
     }

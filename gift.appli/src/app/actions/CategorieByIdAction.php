@@ -5,6 +5,7 @@ namespace gift\appli\app\actions;
 use gift\appli\models\Categorie;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Exception\HttpNotFoundException;
 
 class CategorieByIdAction
 {
@@ -34,7 +35,7 @@ class CategorieByIdAction
             $response->getBody()->write($html);
             return $response;
         }catch (\Exception $e){
-            return $response->withStatus(404);
+            throw new HttpNotFoundException($request, "categorie not found");
         }
     }
 }
