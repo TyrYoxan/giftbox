@@ -1,12 +1,13 @@
-<!DOCTYPE html>
-<html lang="fr">
-<body>
-<h1>{{ categorie.libelle }}</h1>
+{% extends 'Squelette.twig' %}
 
+{% block title %}Categorie{% endblock %}
+
+{% block titre %}{{ categorie.libelle }}{% endblock %}
+
+{% block content %}
     {% for p in prestations %}
-        <h2> {{ p.libelle }}</h2>
-        <p> {{ p.description }}</p>
+        <a href="{{ url_for('prestation') }}?id={{ p.id }}"><h2>{{ p.libelle }}</h2></a>
+            <p> {{ p.description }}</p>
     {% endfor %}
-
-</body>
-</html>
+    <a href="{{ url_for('categories') }}"> Retour</a>
+{% endblock %}

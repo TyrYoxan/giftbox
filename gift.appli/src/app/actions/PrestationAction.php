@@ -22,12 +22,9 @@ class PrestationAction
         try{
             $prestation = new Prestation();
             $prest = $prestation::where('id', '=', $req)->firstOrFail();
-            //$f = new Stream( fopen('../../img/'.$prest->img, 'r') );
-            //$response->withHeader('Content-Type', 'image/jpg')
-            //        ->withBody($f);
-
+            $old_url = $_SERVER['HTTP_REFERER'];
             $view = Twig::fromRequest($request);
-            return $view->render($response, "PrestationView.twig", ['presta' => $prest]);
+            return $view->render($response, "PrestationView.twig", ['presta' => $prest, 'old_url' => $old_url]);
         }catch (\Exception $e){
             throw new HttpNotFoundException($request, $e->getMessage());
         }

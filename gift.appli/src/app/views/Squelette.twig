@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Titre par défaut{% endblock %}</title>
+    <link href="{{ base_path() }}/css/giftbox.css" rel="stylesheet" type="text/css"/>
+    <!-- Inclure vos fichiers CSS et JavaScript ici -->
+</head>
+<body>
+<header>
+    <!-- Contenu de l'en-tête -->
+    <h1>{% block titre%} {% endblock %}</h1>
+</header>
+<nav>
+    <!-- Barre de navigation -->
+    <ul>
+        <li><a href="#">Accueil</a></li>
+        <li><a href="#">À propos</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+</nav>
+<main>
+    {% block content %}{% endblock %}
+</main>
+<footer>
+    <!-- Pied de page -->
+    <p>&copy; 2024 Mon Site. Tous droits réservés.</p>
+</footer>
+</body>
+</html>

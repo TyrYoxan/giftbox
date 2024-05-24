@@ -13,9 +13,6 @@ $app->addRoutingMiddleware();
 $app->addErrorMiddleware(true, false, false);
 
 $twig = \Slim\Views\Twig::create(__DIR__ . '/../app/views', ['cache' => __DIR__ . '/../app/views/cache', 'auto_reload' => true]);
-$twig->getEnvironment()->addFunction(new \Twig\TwigFunction('asset', function ($path) {
-    return sprintf('/%s', ltrim($path, '/'));
-}));
 
 $app->add(\Slim\Views\TwigMiddleware::create($app, $twig));
 

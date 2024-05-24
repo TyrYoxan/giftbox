@@ -1,7 +1,9 @@
-<!DOCTYPE html>
-<html lang="fr">
-<body>
-    <h1>{{ presta.libelle }}</h1>
-    <img src="{{ asset('img/' ~ presta.img) }}" alt="{{ presta.libelle }}" style="width: 200px">
-    </body>
-</html>
+{% extends 'Squelette.twig' %}
+
+{% block title %}PRestation{% endblock%}
+{% block titre %}{{ presta.libelle }}{% endblock %}
+
+{% block content %}
+    <img src="{{ base_path() }}img/{{ presta.img }}" alt="{{ presta.libelle }}" style="width: 200px">
+    <a href="{{ url_for('categoriesById', {'id': presta.cat_id}) }}"> Retour</a>
+{% endblock %}

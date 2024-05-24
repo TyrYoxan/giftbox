@@ -1,11 +1,10 @@
-<!DOCTYPE>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Box Créée</title>
-</head>
-<body>
-<h1>Box Créée</h1>
+{% extends 'Squelette.twig' %}
+
+{% block title %}Box{% endblock %}
+
+{% block titre %}Contenu Box{% endblock %}
+
+{% block content %}
 <div>
     <p><strong>Libellé :</strong> {{ libelle }}</p>
     <p><strong>Description :</strong> {{ description }}</p>
@@ -17,5 +16,4 @@
     {% endif %}
 
 </div>
-</body>
-</html>
+{% endblock %}

@@ -1,7 +1,10 @@
-<!DOCTYPE>
-<html lang="fr">
-<body>
-<h1>Créer une Box</h1>
+{% extends 'Squelette.twig' %}
+
+{% block title %}Box{% endblock %}
+
+{% block titre %}Créer une box{% endblock %}
+
+{% block content %}
 <form method="post" id="boxForm">
     <div>
         <label for="libelle">Libellé:</label>
@@ -30,5 +33,4 @@
         <button type="submit">Créer la Box</button>
     </div>
 </form>
-</body>
-</html>
+{% endblock %}
