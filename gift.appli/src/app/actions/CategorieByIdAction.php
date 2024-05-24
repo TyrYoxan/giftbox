@@ -6,6 +6,7 @@ use gift\appli\models\Categorie;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpNotFoundException;
+use Slim\Views\Twig;
 
 class CategorieByIdAction
 {
@@ -15,27 +16,12 @@ class CategorieByIdAction
             $categorie = new Categorie();
             $category = $categorie::where('id', '=', $args['id'])->firstOrFail();
             $presta = $category->prestations;
-            $html = <<<HTML
-                    <html lang="fr">
-                    <body>
-                        <h1>{$category->libelle}</h1>
-                    HTML;
-            foreach ($presta as $p) {
-                $html .= <<<HTML
 
-                    <h2>{$p->libelle}</h2>
-                    <p>{$p->description}</p>
-                HTML;
-            }
-            $html .= <<<HTML
-                    </body>
-                    </html>
-                    HTML;
 
-            $response->getBody()->write($html);
-            return $response;
+            $view = Twig::fromRequest($request);
+            return $view->render($response, 'CategorieIdView.twig', ['categorie' => $category, 'prestations' => $presta]);
         }catch (\Exception $e){
-            throw new HttpNotFoundException($request, "categorie not found");
+            throw new HttpNotFoundException($request, $e->getMessage());
         }
     }
 }

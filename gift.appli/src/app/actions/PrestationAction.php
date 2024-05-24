@@ -7,6 +7,8 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpBadRequestException;
 use Slim\Exception\HttpNotFoundException;
+use Slim\Psr7\Stream;
+use Slim\Views\Twig;
 use Symfony\Component\Translation\Exception\NotFoundResourceException;
 
 class PrestationAction
@@ -20,16 +22,14 @@ class PrestationAction
         try{
             $prestation = new Prestation();
             $prest = $prestation::where('id', '=', $req)->firstOrFail();
-            $html = <<<HTML
-                <html lang="fr">
-                <body><h1>Prestation {$prest->libelle}</h1></body>
-                </html>
-            HTML;
+            //$f = new Stream( fopen('../../img/'.$prest->img, 'r') );
+            //$response->withHeader('Content-Type', 'image/jpg')
+            //        ->withBody($f);
 
-            $response->getBody()->write($html);
-            return $response;
+            $view = Twig::fromRequest($request);
+            return $view->render($response, "PrestationView.twig", ['presta' => $prest]);
         }catch (\Exception $e){
-            throw new HttpNotFoundException($request, "prestion not found");
+            throw new HttpNotFoundException($request, $e->getMessage());
         }
 
     }

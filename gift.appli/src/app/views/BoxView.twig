@@ -1,0 +1,21 @@
+<!DOCTYPE>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Box Créée</title>
+</head>
+<body>
+<h1>Box Créée</h1>
+<div>
+    <p><strong>Libellé :</strong> {{ libelle }}</p>
+    <p><strong>Description :</strong> {{ description }}</p>
+    <p><strong>Montant :</strong> {{ montant }}</p>
+    <p><strong>Kdo :</strong> {{ kdo }}</p>
+
+    {% if kdo == '1' %}
+        <p><strong>Message :</strong> {{ message }}</p>
+    {% endif %}
+
+</div>
+</body>
+</html>

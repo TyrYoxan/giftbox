@@ -10,6 +10,6 @@ class Categorie extends \Illuminate\Database\Eloquent\Model
  public $timestamps=false ;
 
  public function prestations(){
-    return $this->hasMany('gift\appli\models\prestation', 'cat_id');
+    return $this->hasMany('gift\appli\models\Prestation', 'cat_id');
 }
 }

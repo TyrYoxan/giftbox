@@ -4,6 +4,7 @@ namespace gift\appli\app\actions;
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Views\Twig;
 
 class AfficheBoxCreateAction
 {
@@ -19,34 +20,7 @@ class AfficheBoxCreateAction
 
         $response->withStatus(200);
 
-        $html = <<<HTML
-        <html lang="fr">
-        <head>
-            <meta charset="UTF-8">
-            <title>Box Créée</title>
-        </head>
-        <body>
-            <h1>Box Créée</h1>
-            <div>
-                <p><strong>Libellé :</strong> $libelle</p>
-                <p><strong>Description :</strong> $description</p>
-                <p><strong>Montant :</strong> $montant</p>
-                <p><strong>Kdo :</strong> $kdo</p>
-HTML;
-
-        if ($kdo == '1') {
-            $html .= <<<HTML
-                <p><strong>Message :</strong> $message</p>
-HTML;
-        }
-
-        $html .= <<<HTML
-            </div>
-        </body>
-        </html>
-HTML;
-
-        $response->getBody()->write($html);
-        return $response;
+        $view = Twig::fromRequest($request);
+        return $view->render($response, 'BoxView.twig', ['libelle' => $libelle, 'description' => $description, 'montant' => $montant, 'kdo' => $kdo, 'message' => $message]);
     }
 }

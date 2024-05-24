@@ -1,0 +1,43 @@
+version: '3.1'
+
+services:
+  php:
+    image: canals/php:latest
+
+    volumes:
+      - ./public:/var/www/html
+      - ./src:/var/www/src
+    ports:
+      - "8081:80"
+    networks:
+      - dbmysql
+
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: gift
+
+    volumes:
+      - ./bddata:/var/lib/mysql
+
+    ports:
+      - "3306:3306"
+
+    networks:
+      dbmysql:
+        aliases:
+          - dbgift
+
+  adminer:
+    image: adminer
+    ports:
+      - "8080:8080"
+    networks:
+      - dbmysql
+
+
+networks:
+  dbmysql: {
+    driver: bridge
+  }

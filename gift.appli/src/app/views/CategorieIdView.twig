@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="fr">
+<body>
+<h1>{{ categorie.libelle }}</h1>
+
+    {% for p in prestations %}
+        <h2> {{ p.libelle }}</h2>
+        <p> {{ p.description }}</p>
+    {% endfor %}
+
+</body>
+</html>
