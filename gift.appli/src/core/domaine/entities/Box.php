@@ -1,5 +1,5 @@
 <?php
-namespace gift\appli\models;
+namespace gift\appli\core\domaine\entities;
 
 class Box extends \Illuminate\Database\Eloquent\Model
 {
@@ -11,11 +11,11 @@ class Box extends \Illuminate\Database\Eloquent\Model
  public $timestamps=true ;
 
  public function createur(){
-     return $this->belongsTo('gift\appli\models\User','createur_id');
+     return $this->belongsTo('gift\appli\core\domaine\entities\User','createur_id');
  }
 
  public function prestations() {
-    return $this->belongsToMany('gift\appli\models\Prestation',
+    return $this->belongsToMany('gift\appli\core\domaine\entities\Prestation',
     'box2presta',
    'box_id',
    'presta_id')

@@ -1,5 +1,5 @@
 <?php
-namespace gift\appli\models;
+namespace gift\appli\core\domaine\entities;
 
 class Categorie extends \Illuminate\Database\Eloquent\Model
 {
@@ -10,6 +10,6 @@ class Categorie extends \Illuminate\Database\Eloquent\Model
  public $timestamps=false ;
 
  public function prestations(){
-    return $this->hasMany('gift\appli\models\Prestation', 'cat_id');
+    return $this->hasMany('gift\appli\core\domaine\entities\Prestation', 'cat_id');
 }
 }

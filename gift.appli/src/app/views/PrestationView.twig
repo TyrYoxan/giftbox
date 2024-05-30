@@ -1,9 +1,10 @@
 {% extends 'Squelette.twig' %}
 
-{% block title %}PRestation{% endblock%}
+{% block title %}Prestation{% endblock%}
 {% block titre %}{{ presta.libelle }}{% endblock %}
 
 {% block content %}
-    <img src="{{ base_path() }}img/{{ presta.img }}" alt="{{ presta.libelle }}" style="width: 200px">
+    <p>Unite: {{ presta.unite }}<br> Prix: {{ presta.tarif }}€<br> Catégorie: {{ cat.libelle }}</p>
+    <img src="{{ base_path() }}img/{{ presta.img }}" alt="{{ presta.libelle }}" style="width: 200px"><br>
     <a href="{{ url_for('categoriesById', {'id': presta.cat_id}) }}"> Retour</a>
 {% endblock %}

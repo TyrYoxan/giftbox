@@ -1,4 +1,4 @@
-version: '3.1'
+#version: '3.1'
 
 services:
   php:
@@ -8,7 +8,7 @@ services:
       - ./public:/var/www/html
       - ./src:/var/www/src
     ports:
-      - "8081:80"
+      - "64990:80"
     networks:
       - dbmysql
 
@@ -22,7 +22,7 @@ services:
       - ./bddata:/var/lib/mysql
 
     ports:
-      - "3306:3306"
+      - "64991:3306"
 
     networks:
       dbmysql:
@@ -32,7 +32,8 @@ services:
   adminer:
     image: adminer
     ports:
-      - "8080:8080"
+      - "64993:8080"
+    command: php -S 0.0.0.0:8080 -t /var/www/html
     networks:
       - dbmysql
 

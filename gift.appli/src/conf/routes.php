@@ -13,6 +13,10 @@ return function( \Slim\App $app): \Slim\App {
 
     $app->post('/box/create', \gift\appli\app\actions\AfficheBoxCreateAction::class)->setName('printBox');
 
+    $app->get('/signin', \gift\appli\app\actions\Signin::class)->setName('signin');
+
+    $app->get('/signup', \gift\appli\app\actions\SignUp::class)->setName('signup');
+
     return $app;
 
 };

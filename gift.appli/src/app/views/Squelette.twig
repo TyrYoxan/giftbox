@@ -15,9 +15,10 @@
 <nav>
     <!-- Barre de navigation -->
     <ul>
-        <li><a href="#">Accueil</a></li>
-        <li><a href="#">À propos</a></li>
-        <li><a href="#">Services</a></li>
+        <li><a href="{{ url_for('categories') }}">Catalogue</a></li>
+        <li><a href="{{ url_for('createBox') }}">Créer box</a></li>
+        <li><a href="#"> Ma box</a></li>
+        <li><a href="{{ url_for('signin') }}">connexion</a></li>
         <li><a href="#">Contact</a></li>
     </ul>
 </nav>
@@ -26,7 +27,7 @@
 </main>
 <footer>
     <!-- Pied de page -->
-    <p>&copy; 2024 Mon Site. Tous droits réservés.</p>
+    <p>&copy; 2024 GiftBox. Tous droits réservés.</p>
 </footer>
 </body>
 </html>

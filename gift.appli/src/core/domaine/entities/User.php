@@ -1,5 +1,5 @@
 <?php
-namespace gift\appli\models;
+namespace gift\appli\core\domaine\entities;
 
 class User extends \Illuminate\Database\Eloquent\Model
 {
@@ -11,6 +11,6 @@ class User extends \Illuminate\Database\Eloquent\Model
  public $timestamps=false ;
 
  public function boxs(){
-     return $this->hasMany('gift\appli\models\box', 'createur_id');
+     return $this->hasMany('gift\appli\core\domaine\entities\Box', 'createur_id');
  }
 }
